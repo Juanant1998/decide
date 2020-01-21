@@ -14,9 +14,9 @@ python:
 install:
 - pip install -r requirements.txt
 before_script:
- - cp local_settings.travis.py local_settings.py
+- cd decide 
+- cp local_settings.travis.py local_settings.py
 script:
-- cd decide
 - python ./manage.py makemigrations
 - python ./manage.py migrate
 - python ./manage.py test --keepdb
