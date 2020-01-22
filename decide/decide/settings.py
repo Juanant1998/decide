@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-BASEURL = 'https://giratina-votacion.herokuapp.com/'
+BASEURL = 'https://giratina-votacion.herokuapp.com'
 
 APIS = {
     'authentication': BASEURL,
