@@ -150,6 +150,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = (
+    ('en', ('English')),
+    ('es', ('Spanhish')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 

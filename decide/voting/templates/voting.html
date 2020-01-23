@@ -1,0 +1,22 @@
+{% extends "base.html %"}
+{% load i18n static %}
+
+{% block extracontent %}
+
+    <!-- Change language -->
+    <form action = "{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        {% if LANGUAGE_CODE == "es" %}
+        <button type="submit" class ="btn btn-outline-secondary" name = "language" value="en">
+            <span class="oi oi-globe"></span>&nbsp;EN
+        </button>
+        {% else %}
+        <button type="submit" class="btn btn-outline-secondary" name = "language" value ="es">
+            <span class ="oi oi-globe"></span>&nbsp;ES
+        </button>
+        {% endif %}
+
+    </form>
+
+{% endblock %}
+

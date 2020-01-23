@@ -10,6 +10,20 @@ from .serializers import SimpleVotingSerializer, VotingSerializer
 from base.perms import UserIsStaff
 from base.models import Auth
 
+from django.utils.translation import gettext
+from django.views.generic import TemplateView
+
+
+
+class VotingViewTemp(TemplateView):
+
+    template_name = 'voting/voting.html'
+
+if Voting.start_date:
+    msg = gettext("Voting alreday started")
+
+
+
 
 class VotingView(generics.ListCreateAPIView):
     queryset = Voting.objects.all()
