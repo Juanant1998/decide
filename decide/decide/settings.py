@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import django_heroku
-
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -157,16 +155,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGES = [
-    #('es', _('Español')),
+    ('es', _('Español')),
     #('en-us', _('English')),
-    ('de', _('Germany'))
+    #('de', _('Germany'))
 ]
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 
-LANGUAGE_CODE = 'de'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -206,4 +204,3 @@ if os.path.exists("config.jsonnet"):
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
-django_heroku.settings(locals())
