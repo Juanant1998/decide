@@ -268,7 +268,6 @@ class VotingTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), 'Voting already tallied')
 
-
     def test_update_binary_voting(self):
         voting = self.create_binary_voting()
         #Nota: en esencia es el mismo test que update_voting, pero es necesario para probar las
@@ -350,10 +349,9 @@ class VotingTestCase(BaseTestCase):
         self.assertEqual(response.json(), 'Voting already tallied')
 
 class TestVotacionSiNo(unittest.TestCase):
-
     def setUp(self):
         self.driver = webdriver.Firefox()
-        
+
     def test_signUpCorrect(self):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
         username = self.driver.find_element_by_id('id_username')
@@ -383,3 +381,47 @@ class TestVotacionSiNo(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
+class TestSignUpCorrect(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+
+    def test_signUpCorrect(self):
+        self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
+        username = self.driver.find_element_by_id('id_username')
+        username.clear
+        username.send_keys("Minuke")
+        password = self.driver.find_element_by_id('id_password')
+        password.clear
+        password.send_keys("decidegc")
+        self.driver.find_element_by_xpath("//input[@value='Log in']").click()
+        self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))>0)
+
+    def tearDown(self):
+        self.driver.quit
+
+if __name__ == '__main__':
+    unittest.main()
+
+class TestSignUpIncorrect(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+
+    def test_signUpInorrect(self):
+        self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
+        username = self.driver.find_element_by_id('id_username')
+        username.clear
+        username.send_keys("xxxxxxxx")
+        password = self.driver.find_element_by_id('id_password')
+        password.clear
+        password.send_keys("xxxxxxxx")
+        self.driver.find_element_by_xpath("//input[@value='Log in']").click()
+        self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))==0)
+
+    def tearDown(self):
+        self.driver.quit
+
+if __name__ == '__main__':
+    unittest.main() 
