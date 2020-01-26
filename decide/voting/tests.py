@@ -14,9 +14,6 @@ from mixnet.mixcrypt import ElGamal
 from mixnet.mixcrypt import MixCrypt
 from mixnet.models import Auth
 from voting.models import Voting, Question, QuestionOption
-import unittest 
-from selenium import webdriver
-import time 
 
 
 class VotingTestCase(BaseTestCase):
