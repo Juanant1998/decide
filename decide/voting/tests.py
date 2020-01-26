@@ -14,6 +14,9 @@ from mixnet.mixcrypt import ElGamal
 from mixnet.mixcrypt import MixCrypt
 from mixnet.models import Auth
 from voting.models import Voting, Question, QuestionOption
+import unittest 
+from selenium import webdriver
+import time 
 
 
 class VotingTestCase(BaseTestCase):
@@ -346,3 +349,81 @@ class VotingTestCase(BaseTestCase):
         self.assertEqual(response.json(), 'Voting already tallied')
 
 
+class TestSignUpCorrect(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+        
+    def test_signUpCorrect(self):
+        self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
+        username = self.driver.find_element_by_id('id_username')
+        username.clear
+        username.send_keys("Minuke")
+        password = self.driver.find_element_by_id('id_password')
+        password.clear
+        password.send_keys("decidegc")
+        self.driver.find_element_by_xpath("//input[@value='Iniciar sesión']").click()
+        self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))>0)
+
+    def tearDown(self):
+        self.driver.quit
+
+if __name__ == '__main__':
+    unittest.main()
+
+class TestSignUpIncorrect(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+        
+    def test_signUpInorrect(self):
+        self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
+        username = self.driver.find_element_by_id('id_username')
+        username.clear
+        username.send_keys("xxxxxxxx")
+        password = self.driver.find_element_by_id('id_password')
+        password.clear
+        password.send_keys("xxxxxxxx")
+        self.driver.find_element_by_xpath("//input[@value='Iniciar sesión']").click()
+        self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))==0)
+
+    def tearDown(self):
+        self.driver.quit
+
+if __name__ == '__main__':
+    unittest.main()
+
+class TestVotacionSiNo(unittest.TestCase):
+
+    def setUp(self):
+        self.driver = webdriver.Firefox()
+
+    def test_signUpCorrect(self):
+        self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
+        username = self.driver.find_element_by_id('id_username')
+        username.clear
+        username.send_keys("Minuke")
+        password = self.driver.find_element_by_id('id_password')
+        password.clear
+        password.send_keys("decidegc")
+        self.driver.find_element_by_xpath("//input[@value='Iniciar sesión']").click()
+        self.driver.find_element_by_xpath("//a[contains(@href, '/admin/voting/question/add/')]").click()
+        pregunta = self.driver.find_element_by_id('id_desc')
+        pregunta.clear
+        pregunta.send_keys("¿Estas satisfecho con tu nota del M3?")
+        opcion0 =  self.driver.find_element_by_id('id_options-0-number')
+        opcion0.clear
+        opcion0.send_keys(1)
+        opcion1 =  self.driver.find_element_by_id('id_options-1-number')
+        opcion1.clear
+        opcion1.send_keys(2)
+        self.driver.find_element_by_xpath('//input[@id="id_options-0-yes"]').click()
+        self.driver.find_element_by_xpath('//input[@id="id_options-1-no"]').click()
+        self.driver.find_element_by_xpath('//input[@name="_save"]').click()
+        self.assertTrue(len(self.driver.find_elements_by_class_name('success'))>0)
+
+    def tearDown(self):
+        self.driver.quit
+
+if __name__ == '__main__':
+    unittest.main()
