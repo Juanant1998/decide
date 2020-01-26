@@ -1,0 +1,121 @@
+.panel{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .panel:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+  .api{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #00b300;
+    border-radius: 6px;
+    border: 2px solid #006600;
+  }
+  .api:hover{
+    color: #00b300;
+    background-color: #ffffff;
+  }
+  .censo{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #ff471a;
+    border-radius: 6px;
+    border: 2px solid #801a00;
+  }
+  .censo:hover{
+    color: #ff471a;
+    background-color: #ffffff;
+  }
+  .mixnet{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #cccc00;
+    border-radius: 6px;
+    border: 2px solid #666600;
+  }
+  .mixnet:hover{
+    color: #ffff00;
+    background-color: #ffffff;
+  }
+  .post{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #cc0099;
+    border-radius: 6px;
+    border: 2px solid #4d0039;
+  }
+  .post:hover{
+    color: #cc0099;
+    background-color: #ffffff;
+  }
+  .almacen{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #ff9900;
+    border-radius: 6px;
+    border: 2px solid #804d00;
+  }
+  .almacen:hover{
+    color: #ff9900;
+    background-color: #ffffff;
+  }
+  .voto{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #00b3b3;
+    border-radius: 6px;
+    border: 2px solid #006666;
+  }
+  .voto:hover{
+    color: #00b3b3;
+    background-color: #ffffff;
+  }
+  .navegador{
+      margin-left:90px;
+  }
+h1{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 42px;
+    text-align: center;
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+}
+.portada{
+    float:left;
+    margin-left:150px;
+    text-align: center;
+}
+.miembros{
+    float:right;
+    margin-right:250px;
+    text-align: center;
+}
+.cuerpo{
+    background-color: #ccccff;
+} 
