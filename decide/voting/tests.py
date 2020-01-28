@@ -360,29 +360,16 @@ class TestVotacionSiNo(unittest.TestCase):
         self.selenium = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
         super().setUp()
         
-    def test_signUpCorrect(self):
+    def test_signUpInorrect(self):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
         username = self.driver.find_element_by_id('id_username')
         username.clear
-        username.send_keys("Minuke")
+        username.send_keys("xxxxxxxx")
         password = self.driver.find_element_by_id('id_password')
         password.clear
-        password.send_keys("decidegc")
+        password.send_keys("xxxxxxxx")
         self.driver.find_element_by_xpath("//input[@value='Log in']").click()
-        self.driver.find_element_by_xpath("//a[contains(@href, '/admin/voting/question/add/')]").click()
-        pregunta = self.driver.find_element_by_id('id_desc')
-        pregunta.clear
-        pregunta.send_keys("¿Estas satisfecho con tu nota del M3?")
-        opcion0 =  self.driver.find_element_by_id('id_options-0-number')
-        opcion0.clear
-        opcion0.send_keys(1)
-        opcion1 =  self.driver.find_element_by_id('id_options-1-number')
-        opcion1.clear
-        opcion1.send_keys(2)
-        self.driver.find_element_by_xpath('//input[@id="id_options-0-yes"]').click()
-        self.driver.find_element_by_xpath('//input[@id="id_options-1-no"]').click()
-        self.driver.find_element_by_xpath('//input[@name="_save"]').click()
-        self.assertTrue(len(self.driver.find_elements_by_class_name('success'))>0)
+        self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))==0)
 
     def tearDown(self):
         self.driver.quit
