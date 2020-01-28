@@ -28,6 +28,5 @@ script:
 - python ./manage.py migrate
 - whereis google-chrome-stable
 - whereis chromedriver
-- python3 ./manage.py runserver
 - python ./manage.py test --keepdb
 
