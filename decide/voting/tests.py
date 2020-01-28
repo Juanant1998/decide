@@ -34,7 +34,7 @@ class TestVotacionSiNo(unittest.TestCase):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
         #self.driver.find_element_by_id('id_username').send_keys("1234")
         #self.driver.find_element_by_id('id_password').send_keys("1234")
-        #self.driver.find_element_by_id('login-form').click()
+        self.driver.find_element_by_id('login-form')
         #self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))!=1)
 
     def tearDown(self):
