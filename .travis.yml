@@ -3,7 +3,7 @@ services:
 - postgresql
 addons:
   postgresql: '9.4'
-  chrome: '78.0.3904.108'
+  chrome: stable
 before_script:
 - cd decide
 - cp local_settings.travis.py local_settings.py
@@ -16,7 +16,7 @@ python:
 - '3.6'
 install:
 - pip install -r requirements.txt
-- wget -N https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip -P ~/
+- wget -N https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip -P ~/
 - unzip ~/chromedriver_linux64.zip -d ~/
 - rm ~/chromedriver_linux64.zip
 - sudo mv -f ~/chromedriver /usr/local/share/
@@ -28,5 +28,5 @@ script:
 - python ./manage.py migrate
 - whereis google-chrome-stable
 - whereis chromedriver
-- python ./manage.py test --keepdb
+- python ./manage.py test voting --keepdb
 
