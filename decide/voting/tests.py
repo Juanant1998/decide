@@ -32,10 +32,10 @@ class TestVotacionSiNo(unittest.TestCase):
         
     def test_signUpInorrect(self):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
-        time.sleep(20)
-        #self.driver.find_element_by_id('id_username').send_keys("1234")
+        time.sleep(200)
+        self.driver.find_element_by_name('username')
         #self.driver.find_element_by_id('id_password').send_keys("1234")
-        self.driver.find_element_by_id('login-form')
+        #self.driver.find_element_by_id('login-form')
         #self.assertTrue(len(self.driver.find_elements_by_id('user-tools'))!=1)
 
     def tearDown(self):
