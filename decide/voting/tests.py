@@ -357,7 +357,7 @@ class TestVotacionSiNo(unittest.TestCase):
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
-        self.selenium = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver',chrome_options=chrome_options)
         super().setUp()
         
     def test_signUpInorrect(self):
