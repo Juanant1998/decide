@@ -28,5 +28,5 @@ script:
 - python ./manage.py migrate
 - whereis google-chrome-stable
 - whereis chromedriver
-- python ./manage.py test voting --keepdb
+- travis_wait 20 python ./manage.py test voting --keepdb
 
