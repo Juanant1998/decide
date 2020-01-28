@@ -1,21 +1,32 @@
 dist: xenial
-
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
+  chrome: stable
 before_script:
-  - psql -U postgres -c "create user decide password 'decide'"
-  - psql -U postgres -c "create database test_decide owner decide"
-  - psql -U postgres -c "ALTER USER decide CREATEDB"
+- cd decide
+- cp local_settings.travis.py local_settings.py
+- psql -U postgres -c "create user decide password 'decide'"
+- psql -U postgres -c "create database test_decide owner decide"
+- psql -U postgres -c "ALTER USER decide CREATEDB"
+- psql -U postgres -c "ALTER USER decide Superuser"
 language: python
 python:
-  - "3.6"
+- '3.6'
 install:
-  - pip install -r requirements.txt
-  - pip install codacy-coverage
+- pip install -r requirements.txt
+- wget -N http://chromedriver.storage.googleapis.com/2.30/chromedriver_linux6$
+- unzip ~/chromedriver_linux64.zip
+- sudo mv -f ~/chromedriver /usr/local/share
+- sudo chmod +x /usr/local/share/chromedriver
+- sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
 script:
-  - cd decide
-  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+- python ./manage.py makemigrations
+- python ./manage.py migrate
+- whereis google-chrome-stable
+- whereis chromedriver
+- python3 ./manage.py runserver
+- python ./manage.py test --keepdb
+

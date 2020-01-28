@@ -16,6 +16,8 @@ from mixnet.models import Auth
 from voting.models import Voting, Question, QuestionOption
 import unittest 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
 import time 
 
 
@@ -352,7 +354,10 @@ class VotingTestCase(BaseTestCase):
 class TestVotacionSiNo(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Firefox()
+	chrome_options = Options()
+	chrome_options.add_argument('--headless')
+	chrome_options.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome('/usr/local/bin/chromedriver', chrome_options=chrome_options)
         
     def test_signUpCorrect(self):
         self.driver.get("http://localhost:8000/admin/login/?next=/admin/")
