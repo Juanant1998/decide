@@ -29,3 +29,5 @@ deploy:
     secure: $GITHUB_OAUTH_TOKEN
   file: decide_release.zip
   skip_cleanup: true
+  on:
+    branch: develop
